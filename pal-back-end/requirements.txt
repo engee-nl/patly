@@ -1,0 +1,9 @@
+aiofiles
+fastapi
+pydantic
+python-dotenv    # for reading environment variables
+uvicorn
+loguru
+redis
+python-slugify
+openai
