@@ -15,6 +15,10 @@ export interface TopInfringingProduct {
     specific_features: string[];
 }
 
+export interface InfringementResponse {
+    result : InfringementReport
+}
+
 export interface InfringementReport {
     analysis_id: string;
     patent_id: string;
@@ -37,7 +41,7 @@ export interface AutoCompleteRow {
     name: string
 }
 
-export const checkInfringement = async (requestData: InfringementRequest): Promise<InfringementReport | null> => {
+export const checkInfringement = async (requestData: InfringementRequest): Promise<InfringementResponse | null> => {
     try {
         const response = await fetch(`${API_HOST}/patents/check-infringement`, {
             method: "POST",

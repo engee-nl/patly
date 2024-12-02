@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Notification from './components/Notification';
 import Report from "./components/Report";
 import AutocompleteInputs from "./components/AutocompleteInputs";
-import { InfringementReport } from "./types/infringementReport";
+import { InfringementReport, InfringementResponse } from "./types/infringementReport";
 import { checkInfringement, InfringementRequest, } from "./services/infringementService";
 
 export default function Home() {
@@ -47,8 +47,9 @@ export default function Home() {
     };
 
     try {
-      const report: InfringementReport | null = await checkInfringement(requestData);
-      if (report) {
+      const responseData: InfringementResponse | null = await checkInfringement(requestData);
+      if (responseData) {
+        const report: InfringementReport = responseData.result;
         const isDuplicate = reports.some((r) => r.analysis_id === report.analysis_id);
         if (!isDuplicate) {
           setReports((prev) => [...prev, report]);

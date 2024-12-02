@@ -93,7 +93,7 @@ async def check_patent_infringement(request: InfringementCheckRequest):
         cached_result = cache_query(cache_key)
         if cached_result:
             logger.info("analyze_infringement > results from cache")
-            return cached_result
+            return {"result": cached_result}
         
         res_analyze = analyze_infringement(patent, company_products, cache_key)
         if res_analyze:
@@ -105,7 +105,8 @@ async def check_patent_infringement(request: InfringementCheckRequest):
         if res_analyze:
             cache_query(cache_key, res_analyze)
             
-        return res_analyze
+        #return res_analyze
+        {"result": res_analyze}
     except Exception as e:
         logger.error(e)
         raise HTTPException(status_code=500, detail=f"Error during infringement analysis: {str(e)}")
