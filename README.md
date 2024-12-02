@@ -3,8 +3,8 @@
 
 This repository contains two separate projects:
 
-1. **Back End**: Developed in Python using the FastAPI framework.
-2. **Front End**: A web application built with Next.js and Tailwind CSS.
+1. **Back End (pal-back-end)**: Developed in Python using the FastAPI framework.
+2. **Front End (pal-front-end)**: A web application built with Next.js and Tailwind CSS.
 
 A demo section is included at the end of this README.
 
@@ -289,6 +289,8 @@ This project can be run using Docker. Follow the steps below:
 - **TypeScript**: Strongly-typed JavaScript for better code quality and maintainability.
 - **Tailwind CSS**: Utility-first CSS framework for building responsive and modern UIs.
 - **React Hooks**: For managing state and lifecycle methods in functional components.
+
+## To Do - Best practices
 
 ## Demo
 - **Back End Service**:        http://43.201.34.212:8200/docs
