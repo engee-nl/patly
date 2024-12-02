@@ -24,7 +24,7 @@ The server architecture setup is outlined below, designed with the following con
 
 Currently, for demonstration purposes, the projects are deployed on a single server (AWS EC2 t2.micro).
 
-![Server architecture](server-architecture.drawio.png)
+![Server architecture](server-architecture.drawio-v2.png)
 
 ## Back End
 
