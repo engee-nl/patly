@@ -1,6 +1,6 @@
 aiofiles
 fastapi
-pydantic
+pydantic-settings
 python-dotenv    # for reading environment variables
 uvicorn
 loguru
