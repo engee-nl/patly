@@ -7,12 +7,16 @@ interface Suggestion {
 }
 
 interface AutocompleteInputsProps {
-    showNotification: (message: string, type: "success" | "error" | "info") => void;
     setPatentId: (patent_id:string) => void;
     setCompanyName: (company_name:string) => void;
 }
 
-const AutocompleteInputs: React.FC<AutocompleteInputsProps> = ({ showNotification, setPatentId, setCompanyName }) => {
+type AutoCompleteListResponse = {
+  id: string;
+  name: string;
+};
+
+const AutocompleteInputs: React.FC<AutocompleteInputsProps> = ({ setPatentId, setCompanyName }) => {
   const [patentSuggestions, setPatentSuggestions] = useState<Suggestion[]>([]);
   const [companySuggestions, setCompanySuggestions] = useState<Suggestion[]>([]);
 
@@ -33,7 +37,11 @@ const AutocompleteInputs: React.FC<AutocompleteInputsProps> = ({ showNotificatio
       setIsPatentLoading(true);
       const suggestions = await fetchPatentId({"patent_id" : query});
       if (suggestions){
-        setPatentSuggestions(suggestions);
+        const formattedSuggestions: Suggestion[] = suggestions.map((item: AutoCompleteListResponse) => ({
+          id: item.id,
+          name: item.name 
+        }));
+        setPatentSuggestions(formattedSuggestions);
         setShowPatentSuggestions(true);
       }
       setIsPatentLoading(false);
@@ -50,7 +58,11 @@ const AutocompleteInputs: React.FC<AutocompleteInputsProps> = ({ showNotificatio
       setIsCompanyLoading(true);
       const suggestions = await fetchCompanyName({"company_name" : query});
       if (suggestions){
-        setCompanySuggestions(suggestions);
+        const formattedSuggestions: Suggestion[] = suggestions.map((item: AutoCompleteListResponse) => ({
+          id: item.id,
+          name: item.name 
+        }));
+        setCompanySuggestions(formattedSuggestions);
         setShowCompanySuggestions(true);
       }
       setIsCompanyLoading(false);

@@ -37,11 +37,7 @@ export interface AutoCompleteRow {
     name: string
 }
 
-export interface AutoCompleteListResponse {
-    list: AutoCompleteRow[];
-}
-
-export const checkInfringement = async (requestData: InfringementRequest): Promise<InfringementReport> => {
+export const checkInfringement = async (requestData: InfringementRequest): Promise<InfringementReport | null> => {
     try {
         const response = await fetch(`${API_HOST}/patents/check-infringement`, {
             method: "POST",
@@ -52,7 +48,7 @@ export const checkInfringement = async (requestData: InfringementRequest): Promi
         });
 
         if (!response.ok) {
-            console.error("API Error:", errorData.detail || "Error checking infringement");
+            console.error("Error checking infringement");
             return null;
         }
 
@@ -63,7 +59,7 @@ export const checkInfringement = async (requestData: InfringementRequest): Promi
     }
 };
 
-export const fetchPatentId = async (requestData: PatentIdFetchRequest): Promise<AutoCompleteListResponse> => {
+export const fetchPatentId = async (requestData: PatentIdFetchRequest): Promise<AutoCompleteRow[]> => {
     try {
         const response = await fetch(`${API_HOST}/patents/search`, {
             method: "POST",
@@ -74,18 +70,18 @@ export const fetchPatentId = async (requestData: PatentIdFetchRequest): Promise<
         });
 
         if (!response.ok) {
-            console.error("API Error:", errorData.detail || "Error searching patents");
-            return null;
+            console.error("Error searching patents");
+            return [];
         }
 
         return await response.json();
     } catch (error) {
         console.error("Network or Parsing Error:", error instanceof Error ? error.message : error);
-        return null; 
+        return []; 
     }
 };
 
-export const fetchCompanyName = async (requestData: CompanyNameFetchRequest): Promise<AutoCompleteListResponse> => {
+export const fetchCompanyName = async (requestData: CompanyNameFetchRequest): Promise<AutoCompleteRow[]> => {
     try {
         const response = await fetch(`${API_HOST}/companies/search`, {
             method: "POST",
@@ -96,13 +92,13 @@ export const fetchCompanyName = async (requestData: CompanyNameFetchRequest): Pr
         });
 
         if (!response.ok) {
-            console.error("API Error:", errorData.detail || "Error searching companies");
-            return null;
+            console.error("Error searching companies");
+            return [];
         }
 
         return await response.json();
     } catch (error) {
         console.error("Network or Parsing Error:", error instanceof Error ? error.message : error);
-        return null; 
+        return []; 
     }
 };

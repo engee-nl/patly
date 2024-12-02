@@ -47,15 +47,15 @@ export default function Home() {
     };
 
     try {
-      const report = await checkInfringement(requestData);
-      if (report && report.result) {
-        const isDuplicate = reports.some((r) => r.analysis_id === report.result.analysis_id);
+      const report: InfringementReport | null = await checkInfringement(requestData);
+      if (report) {
+        const isDuplicate = reports.some((r) => r.analysis_id === report.analysis_id);
         if (!isDuplicate) {
-          setReports((prev) => [...prev, report.result]);
+          setReports((prev) => [...prev, report]);
         }
       }
-    } catch (error: any) {
-      showNotification(`Error: ${error.message}`, "error");
+    } catch (error) {
+      showNotification(`Error: ${error}`, "error");
     } finally {
       setLoading(false);
     }
@@ -85,12 +85,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-      <Notification message={notification?.message || ""} type={notification?.type} />
+      <Notification message={notification?.message || ""} type={notification?.type || "error"} />
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-md p-6">
         <h1 className="text-2xl font-bold mb-4">Patent Infringement Checker</h1>
 
         <div className="space-y-4">
-          <AutocompleteInputs showNotification={showNotification} setCompanyName={setCompanyName} setPatentId={setPatentId} />
+          <AutocompleteInputs setCompanyName={setCompanyName} setPatentId={setPatentId} />
           <div className="space-y-2"></div>
           <button
             onClick={handleCheckInfringement}
