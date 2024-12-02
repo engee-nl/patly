@@ -135,7 +135,7 @@ export default function Home() {
       {loading && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-md shadow-md">
-            <p className="text-lg font-semibold">Checking...</p>
+            <p className="text-lg font-semibold">Checking... (it may take a while)</p>
           </div>
         </div>
       )}
