@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import Notification from './components/Notification';
 import Report from "./components/Report";
 import AutocompleteInputs from "./components/AutocompleteInputs";
-import { InfringementReport, InfringementResponse } from "./types/infringementReport";
-import { checkInfringement, InfringementRequest, } from "./services/infringementService";
+import { InfringementReport } from "./types/infringementReport";
+import { checkInfringement, InfringementRequest, InfringementResponse } from "./services/infringementService";
 
 export default function Home() {
   const [patentId, setPatentId] = useState("");
