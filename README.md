@@ -15,7 +15,7 @@ A demo section is included at the end of this README.
 - Run a patent infringement check against the specified company.
 - Return the top two infringing products of the company along with detailed explanations of why these products potentially infringe the patent, including specific claims at issue.
 
-### Server Architecture
+## Server Architecture
 
 The server architecture setup is outlined below, designed with the following considerations:
 
@@ -24,7 +24,7 @@ The server architecture setup is outlined below, designed with the following con
 
 Currently, for demonstration purposes, the projects are deployed on a single server (AWS EC2 t2.micro).
 
----
+![Server architecture](server-architecture.drawio.png)
 
 ## Back End
 
