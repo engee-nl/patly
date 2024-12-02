@@ -93,7 +93,7 @@ async def check_patent_infringement(request: InfringementCheckRequest):
         cached_result = cache_query(cache_key)
         if cached_result:
             logger.info("analyze_infringement > results from cache")
-            return {"result": cached_result}
+            return cached_result
         
         res_analyze = analyze_infringement(patent, company_products, cache_key)
         if res_analyze:
