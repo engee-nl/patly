@@ -2,3 +2,6 @@
 
 # misc
 /data_files
+
+# env files (can opt-in for committing if needed)
+.env*
