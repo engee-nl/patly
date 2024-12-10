@@ -155,6 +155,8 @@ This project can be run using Docker. Follow the steps below:
 
 ## To Do - Best practices
 
+- **Word2vec, speech tagging, stemming algorithms** 
+
 ***
 ***
 ***
