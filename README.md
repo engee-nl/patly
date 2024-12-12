@@ -71,7 +71,7 @@ pal-back-end/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/engee-nl/patly.git OR unzip patlytics-assignment.zip
+   git clone https://github.com/engee-nl/patly.git OR unzip patly.zip
    cd pal-back-end
    ```
 
@@ -224,7 +224,7 @@ pal-front-end/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/engee-nl/patly.git OR unzip patlytics-assignment.zip
+   git clone https://github.com/engee-nl/patly.git OR unzip patly.zip
    cd pal-front-end
    ```
 
